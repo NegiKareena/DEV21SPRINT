@@ -1,4 +1,5 @@
 import Banner from "./components/Banner";
+import Freeplant from "./components/Freeplant";
 import Navbar from "./components/Navbar";
 
 export default function App() {
@@ -6,6 +7,8 @@ export default function App() {
    <>
    <Navbar/>
    <Banner/>
+   <Freeplant/>
+   <Footer/>
    </>
   )
 }
