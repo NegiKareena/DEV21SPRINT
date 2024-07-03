@@ -1,11 +1,26 @@
+import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import Cards from "./Cards"; 
-import list from "../../public/list.json"; 
-
+import Cards from "./Cards";  
+import axios from "axios";
 export default function Freeplant() {
-  const filterData = list.filter((data) => data.category === "Free");
+  const [plant, setPlant] = useState([])
+  useEffect(() => {
+    const getPlant = async()=>{
+      try{
+         const res = await axios.get("http://localhost:4001/plant");
+         const data = res.data.filter((data) => data.category === "Free");
+         console.log(data);
+         setPlant(data);
+         
+      } catch(error){
+       console.log(error)
+      }
+    };
+    getPlant();
+  }, [])
+  //const filterData = list.filter((data) => data.category === "Free");
 
   const settings = {
     dots: true,
@@ -53,7 +68,7 @@ export default function Freeplant() {
         </div>
         <div>
           <Slider {...settings}>
-            {filterData.map((item) => (
+            {plant.map((item) => (
               <Cards item={item} key={item.id} />
             ))}
           </Slider>
