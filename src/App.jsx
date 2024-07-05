@@ -4,6 +4,7 @@ import Plants from "./plants/Plants";
 import Signup from "./components/Signup";
 import Contacts from "./contact/Contacts";
 import Blogs from "./blog/Blogs";
+import { Toaster } from 'react-hot-toast';
 export default function App() {
   return (
    <>
@@ -17,6 +18,7 @@ export default function App() {
         <Route path = "/blog" element = {<Blogs/>} />
       
       </Routes>
+      <Toaster />
    </>
   )
 }
